@@ -9,8 +9,16 @@ export function SiteFooter() {
       <div className={styles.wrap}>
         <div className={styles.ft}>
           <div>
-            <Link className={`${styles.brand} ${styles.fbrand}`} href="/#home">
-              Big Shanty<span>Antiques</span>
+            <Link href="/" aria-label="Big Shanty Antiques home">
+              <img
+                className={styles.flogo}
+                src="/assets/subsidiary-antiques.png"
+                alt="Big Shanty Antiques"
+                width={257}
+                height={175}
+                loading="lazy"
+                decoding="async"
+              />
             </Link>
           </div>
           <div>
@@ -32,7 +40,7 @@ export function SiteFooter() {
             <h3>Quick Links</h3>
             <ul>
               <li>
-                <Link href="/#home">Home</Link>
+                <Link href="/">Home</Link>
               </li>
               <li>
                 <Link href="/#about">About</Link>
@@ -41,7 +49,7 @@ export function SiteFooter() {
                 <Link href="/#services">Services</Link>
               </li>
               <li>
-                <Link href="/#contact">Contact</Link>
+                <Link href="/contact">Contact</Link>
               </li>
             </ul>
           </div>

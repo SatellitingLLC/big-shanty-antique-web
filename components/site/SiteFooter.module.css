@@ -58,6 +58,13 @@
   color: #9c7d34;
 }
 
+.flogo {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 .ft h3 {
   font-family: var(--font-cormorant, "Cormorant Garamond"), Georgia, serif;
   font-weight: 500;

@@ -6,11 +6,12 @@ import { submitContactForm } from "@/lib/contact-form";
 import styles from "./page.module.css";
 
 const topics = [
-  { label: "Consignment", value: "Consignment" },
-  { label: "Bidding", value: "Bidding" },
-  { label: "Pickup", value: "Pickup" },
-  { label: "Preview", value: "Preview" },
-  { label: "Something else", value: "Something else" },
+  { label: "Buying", value: "Buying" },
+  { label: "Consigning", value: "Consigning" },
+  { label: "Appraisal", value: "Appraisal" },
+  { label: "Auction", value: "Auction" },
+  { label: "Estate Sale", value: "Estate Sale" },
+  { label: "Other", value: "Other" },
 ];
 
 export function ContactForm() {
@@ -20,62 +21,43 @@ export function ContactForm() {
 
   return (
     <form className={styles.form} data-contact-form onSubmit={handleSubmit}>
-      <fieldset className={styles.formField}>
-        <legend className={styles.fieldLabel}>I&apos;m reaching out about</legend>
-        <div className={styles.topicOptions}>
-          {topics.map((topic, index) => (
-            <span className={styles.topic} key={topic.value}>
-              <input
-                id={`contact-topic-${index}`}
-                type="radio"
-                name="topic"
-                value={topic.value}
-                defaultChecked={index === 0}
-              />
-              <label htmlFor={`contact-topic-${index}`}>{topic.label}</label>
-            </span>
-          ))}
-        </div>
+      <fieldset className={styles.tickets}>
+        <legend className={styles.ticketLabel}>Admit one to a conversation about</legend>
+        {topics.map((topic, index) => (
+          <label className={styles.ticket} key={topic.value}>
+            <input type="radio" name="topic" value={topic.value} defaultChecked={index === 0} />
+            <span>{topic.label}</span>
+          </label>
+        ))}
       </fieldset>
 
+      <div className={styles.field}>
+        <label htmlFor="contact-name">Your name</label>
+        <input id="contact-name" name="name" autoComplete="name" required />
+      </div>
       <div className={styles.fieldRow}>
-        <div className={styles.formField}>
-          <label className={styles.fieldLabel} htmlFor="contact-name">Your Name</label>
-          <input id="contact-name" name="name" autoComplete="name" required />
+        <div className={styles.field}>
+          <label htmlFor="contact-email">Email</label>
+          <input id="contact-email" name="email" type="email" autoComplete="email" required />
         </div>
-        <div className={styles.formField}>
-          <label className={styles.fieldLabel} htmlFor="contact-phone">Phone</label>
+        <div className={styles.field}>
+          <label htmlFor="contact-phone">Phone (optional)</label>
           <input id="contact-phone" name="phone" type="tel" autoComplete="tel" />
         </div>
       </div>
-      <div className={styles.formField}>
-        <label className={styles.fieldLabel} htmlFor="contact-email">Email</label>
-        <input id="contact-email" name="email" type="email" autoComplete="email" />
-      </div>
-      <div className={styles.formField}>
-        <label className={styles.fieldLabel} htmlFor="contact-message">Tell us about it</label>
+      <div className={styles.field}>
+        <label htmlFor="contact-message">Your message</label>
         <textarea
           id="contact-message"
           name="message"
-          placeholder="Describe the items, the estate, or your question..."
           required
+          placeholder="Tell us a little about what you have or what you're hunting for."
         />
       </div>
       <p className={styles.formError} role="alert" aria-live="polite" />
-      <p className={styles.formNote}>
-        We read every message and reply by email or phone.
-      </p>
       <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ display: "none" }} />
       <button className={styles.submitButton} type="submit">
-        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="3" aria-hidden="true">
-          <g transform="translate(64 0) scale(-1 1)">
-            <g transform="rotate(-30 32 24)">
-              <rect x="18" y="12" width="28" height="14" rx="3" />
-              <path d="M32 26v30" />
-            </g>
-          </g>
-        </svg>
-        Strike the Gavel
+        Send Word
       </button>
     </form>
   );

@@ -7,10 +7,10 @@ import { getStoreStatus, parseStoreHours } from "@/lib/store-hours";
 import styles from "./SiteHeader.module.css";
 
 const links = [
-  { href: "/#home", label: "Home" },
+  { href: "/", label: "Home" },
   { href: "/#about", label: "About" },
   { href: "/#services", label: "Services" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function SiteHeader({ currentPage }: { currentPage?: "Home" | "About" | "Team" | "Contact" }) {
@@ -47,7 +47,7 @@ export function SiteHeader({ currentPage }: { currentPage?: "Home" | "About" | "
     <header className={styles.hdr} role="banner">
       <div className={styles.main}>
         <div className={styles.wrap}>
-          <Link className={styles.brand} href="/#home" aria-label="Big Shanty Antiques home">
+          <Link className={styles.brand} href="/" aria-label="Big Shanty Antiques home">
             Big Shanty<span>Antiques</span>
           </Link>
           <button
@@ -90,12 +90,16 @@ export function SiteHeader({ currentPage }: { currentPage?: "Home" | "About" | "
               </svg>
               <span className={styles.lbl}>Call</span>
             </a>
-            <Link className={`${styles.act} ${styles.solid}`} href="/#contact" aria-label="Email">
+            <a
+              className={`${styles.act} ${styles.solid}`}
+              href="mailto:dwaynesantiques@gmail.com"
+              aria-label="Email"
+            >
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M3 6h18v12H3zM3 7l9 7 9-7" />
               </svg>
               <span className={styles.lbl}>Email</span>
-            </Link>
+            </a>
           </div>
         </div>
       </div>

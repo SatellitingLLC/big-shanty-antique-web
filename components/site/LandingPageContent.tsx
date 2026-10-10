@@ -77,7 +77,7 @@ export function LandingPageContent({ html }: { html: string }) {
         link.href = "/team";
       } else if (label === "about") {
         link.href = "/about";
-      } else if (label === "contact" && link.getAttribute("href") === "#contact") {
+      } else if (label === "contact" && ["#contact", "/#contact"].includes(link.getAttribute("href") ?? "")) {
         link.href = "/contact";
       }
     });

@@ -2,17 +2,23 @@ export async function submitContactForm(form: HTMLFormElement, event: { preventD
   event.preventDefault();
   if (form.dataset.sent) return;
   const data = new FormData(form);
-  const email = String(data.get("email") ?? "").trim();
-  const phone = String(data.get("phone") ?? "").trim();
+  const contact = String(data.get("contact") ?? "").trim();
+  const email = String(data.get("email") ?? contact).trim();
   const error = form.querySelector<HTMLElement>("[role='alert']");
   const button = form.querySelector<HTMLButtonElement>("button[type='submit']");
   const show = (text: string) => {
     if (error) error.textContent = text;
   };
 
-  if (!email && !phone) {
-    show("Please add an email address or phone number so we can reply.");
-    form.querySelector<HTMLInputElement>("[name='email']")?.focus();
+  if (!email) {
+    show("Please add your email address so we can reply.");
+    form.querySelector<HTMLInputElement>("[name='email'], [name='contact']")?.focus();
+    return;
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    show("Please enter a valid email address.");
+    form.querySelector<HTMLInputElement>("[name='email'], [name='contact']")?.focus();
     return;
   }
 
