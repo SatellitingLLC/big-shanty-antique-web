@@ -1,0 +1,148 @@
+.header {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 6vw;
+  border-bottom: 1px solid rgba(201, 162, 77, 0.28);
+  background: rgba(11, 10, 9, 0.93);
+  backdrop-filter: blur(8px);
+  font-family: "Jost", Arial, Helvetica, sans-serif;
+  line-height: 1;
+}
+
+.brand {
+  flex: 0 0 auto;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.brand span {
+  display: block;
+  color: #c9a24d;
+  font-family: "Jost", sans-serif;
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.55em;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.navigation a:hover,
+.navigation a[aria-current="page"] {
+  color: #c9a24d;
+}
+
+.navigation .phone {
+  flex: 0 0 auto;
+  color: #c9a24d;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.35rem;
+  letter-spacing: 0.06em;
+}
+
+.menuToggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 44px;
+  height: 44px;
+  padding: 11px;
+  border: 1px solid rgba(201, 162, 77, 0.28);
+  background: none;
+  cursor: pointer;
+}
+
+.menuToggle i {
+  display: block;
+  height: 1px;
+  background: #c9a24d;
+  transition: 0.3s;
+}
+
+.menuToggle[aria-expanded="true"] i:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menuToggle[aria-expanded="true"] i:nth-child(2) {
+  opacity: 0;
+}
+
+.menuToggle[aria-expanded="true"] i:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.open {
+  display: flex;
+  animation: menuDrop 0.3s ease-out;
+}
+
+@keyframes menuDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .menuToggle {
+    display: flex;
+  }
+
+  .navigation {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 6vw 22px;
+    border-bottom: 1px solid #c9a24d;
+    background: rgba(11, 10, 9, 0.98);
+    box-shadow: 0 24px 40px rgba(0, 0, 0, 0.6);
+  }
+
+  .navigation.open {
+    display: flex;
+  }
+
+  .navigation a {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(201, 162, 77, 0.28);
+    font-size: 0.85rem;
+  }
+
+  .navigation .phone {
+    padding: 20px 0 0;
+    border: 0;
+    font-size: 1.6rem;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menuToggle i {
+    transition: none;
+  }
+}
