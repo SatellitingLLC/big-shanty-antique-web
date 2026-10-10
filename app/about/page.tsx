@@ -129,8 +129,8 @@ export default async function AboutPage() {
             <figure className={styles.archwrap}>
               <div className={styles.arch}>
                 <img
-                  src="/assets/about-carriage.jpg"
-                  alt="Antique carriage on the showroom floor"
+                  src="/assets/buffalo_ranch.jpg"
+                  alt="Framed Buffalo Ranch Wild West show poster on the showroom floor"
                   loading="lazy"
                   decoding="async"
                 />
@@ -171,8 +171,8 @@ export default async function AboutPage() {
             <figure>
               <div className={styles.plate}>
                 <img
-                  src="/assets/about-carriage.jpg"
-                  alt="Antique carriage on the showroom floor"
+                  src="/assets/wood_bench.jpg"
+                  alt="Wooden bench styled with cutting boards, baskets, and primitives"
                   loading="lazy"
                   decoding="async"
                 />
@@ -182,8 +182,8 @@ export default async function AboutPage() {
             <figure>
               <div className={styles.plate}>
                 <img
-                  src="/assets/about-cabinets.jpg"
-                  alt="Antique cabinets and advertising signs"
+                  src="/assets/face_jug.jpg"
+                  alt="Face jug and collectibles among dealer finds"
                   loading="lazy"
                   decoding="async"
                 />
