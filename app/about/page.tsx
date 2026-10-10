@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
@@ -8,55 +9,55 @@ import { getSiteUrl } from "@/lib/site-url";
 import { connection } from "next/server";
 import styles from "./page.module.css";
 
-const chapters = [
-  {
-    chapter: "Chapter I",
-    title: "The Backroom",
-    description: "A small auction company takes root in the back of a big antique mall.",
-  },
-  {
-    chapter: "Chapter II",
-    title: "A Following",
-    description: "People from all walks of life gather for the auctions and stay for the company.",
-  },
-  {
-    chapter: "Chapter III",
-    title: "Room to Grow",
-    description:
-      "A 5,000+ sq ft space built for auctions, alongside a 5,000+ sq ft warehouse for future sales.",
-  },
-  {
-    chapter: "Chapter IV",
-    title: "Today",
-    description:
-      "An antique mall, monthly auctions featuring 500+ items, and several estate sales each month.",
-  },
-];
-
-const facts = [
-  { value: "5,000+", label: "Sq Ft Auction Space" },
-  { value: "5,000+", label: "Sq Ft Warehouse" },
-  { value: "500+", label: "Items Per Monthly Auction" },
-  { value: "3", label: "Ways We Serve You" },
-];
-
 const siteUrl = getSiteUrl();
 const description =
-  "Learn how Big Shanty Auction grew from a backroom auction into a Marietta, Georgia destination for antiques, monthly auctions, and estate sales.";
+  "Learn how Big Shanty Antiques grew from a Kennesaw antique mall into a Marietta, Georgia destination for antiques and collectibles.";
 const canonical = siteUrl ? new URL("/about", siteUrl).href : undefined;
 
 export const metadata: Metadata = {
-  title: "About Us | Big Shanty Auction",
+  title: "About | Big Shanty Antiques",
   description,
   alternates: canonical ? { canonical } : undefined,
   openGraph: {
-    title: "About Us | Big Shanty Auction",
+    title: "About | Big Shanty Antiques",
     description,
     type: "website",
-    siteName: "Big Shanty Auction",
+    siteName: "Big Shanty Antiques",
     ...(canonical ? { url: canonical } : {}),
   },
 };
+
+const chapters = [
+  {
+    num: "Chapter I",
+    title: "Kennesaw, Georgia",
+    description: "Big Shanty Antiques begins as a quality local antique mall.",
+  },
+  {
+    num: "Chapter II",
+    title: "A New Steward",
+    description:
+      "After changing hands a few times, Dwayne Bramlett buys the company, driven by his love of antiques and the game of buying and selling.",
+  },
+  {
+    num: "Chapter III",
+    title: "Raising the Standard",
+    description:
+      "Hard work and dedication lift the company's credibility and respect to heights unseen before, making it a known name on the Southeast antique circuit.",
+  },
+  {
+    num: "Chapter IV",
+    title: "Down the Road",
+    description:
+      "Too large for its first home, the business moves to a new location with a fresh, updated look and a massive warehouse for some of Georgia's most valuable antiques.",
+  },
+  {
+    num: "Chapter V",
+    title: "Today",
+    description:
+      "A destination antique mall in Marietta, with dealers and collectors visiting from across the Southeast.",
+  },
+];
 
 export default async function AboutPage() {
   await connection();
@@ -72,67 +73,87 @@ export default async function AboutPage() {
     );
   }
 
+  // Fallback doubles as the GrapesJS seed source: the editor loads this
+  // page's <main> into the canvas when no draft exists yet.
   return (
     <div className={`${styles.page} about-page`}>
       <SiteHeader currentPage="About" />
 
       <main>
-        <header className={styles.hero} aria-labelledby="about-title">
-          <p className={styles.eyebrow}>About Us</p>
-          <h1 id="about-title">
-            Every Great Piece Has a <em>Provenance.</em> So Do We.
-          </h1>
-          <p className={styles.heroText}>
-            Big Shanty Auction is the auction venture of Big Shanty Antiques. This is how a
-            backroom auction became a destination.
+        <header className={styles.phero} aria-labelledby="about-title">
+          <svg className={styles.orn} viewBox="0 0 300 20" aria-hidden="true">
+            <g fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round">
+              <path d="M0 10h118M182 10h118" />
+              <path d="M150 1l9 9-9 9-9-9z" />
+              <circle cx="120" cy="10" r="1.4" />
+              <circle cx="180" cy="10" r="1.4" />
+            </g>
+          </svg>
+          <h1 id="about-title">Our Story</h1>
+          <p className={styles.lede}>
+            A little bit about how it all started, and how a Kennesaw antique mall became a
+            name across the Southeast.
           </p>
         </header>
 
-        <section className={styles.story} aria-labelledby="story-title">
-          <div className={styles.storyCopy}>
-            <p className={styles.eyebrow}>Who We Are</p>
-            <h2 id="story-title">
-              The Auction Venture of <em>Big Shanty Antiques</em>
-            </h2>
-            <p>
-              We started as a small auction company in the backroom of a big antique mall,
-              building a following of people who enjoyed the auctions and getting to know us.
-            </p>
-            <p>
-              Today, our auction space and warehouse each span more than 5,000 square feet.
-              We work closely with consignors and bidders to make every sale worth coming back for.
-            </p>
-          </div>
-          <aside className={styles.catalogue} aria-label="Big Shanty Auction at a glance">
-            <div className={styles.catalogueTop}>
-              <span>Catalogue Entry</span>
-              <span>Lot No. 1</span>
+        <section className={styles.intro} aria-label="How Big Shanty Antiques started">
+          <div className={styles.split}>
+            <div className={styles.drop}>
+              <p>
+                Big Shanty Antiques was started long ago in Kennesaw, GA. A quality local
+                antique mall that changed ownership a few times until Dwayne Bramlett
+                purchased the company due to his love of antiques and the game of buying
+                and selling.
+              </p>
+              <p>
+                Revitalizing the local antique mall was no easy task, but with hard work
+                and dedication we were able to raise the credibility and respect of the
+                company to heights unseen before. Big Shanty Antiques has now become a
+                known name in the Southeast antique market circuit and has continued to
+                grow since.
+              </p>
+              <p>
+                As the success continued, Big Shanty Antiques outgrew its first home and
+                moved down the road to Marietta, opening a new location with a fresh and
+                updated look alongside a massive warehouse for some of the most valuable
+                antiques in Georgia.
+              </p>
+              <p>
+                Today the showroom floor holds row after row of dealer booths, from fine
+                furniture and advertising signs to primitives, collectibles, and one-of-a
+                kind curiosities. Whether you are hunting for a single statement piece or
+                spending the afternoon wandering the aisles, there is always a new find
+                around the corner.
+              </p>
             </div>
-            <h3>Big Shanty Auction</h3>
-            <p className={styles.location}>Marietta, Georgia</p>
-            <dl>
-              <dt>Origin</dt>
-              <dd>The backroom of an antique mall</dd>
-              <dt>Specialty</dt>
-              <dd>Antiques, collectibles, and estates</dd>
-              <dt>Space</dt>
-              <dd>5,000+ sq ft auction space and warehouse</dd>
-              <dt>Status</dt>
-              <dd>Still growing</dd>
-            </dl>
-            <span className={styles.seal} aria-hidden="true">Est. in<br />the<br />backroom</span>
-          </aside>
+            <figure className={styles.archwrap}>
+              <div className={styles.arch}>
+                <img
+                  src="/assets/about-carriage.jpg"
+                  alt="Antique carriage on the showroom floor"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <figcaption>From the showroom floor</figcaption>
+            </figure>
+          </div>
         </section>
 
-        <section className={styles.storySection} aria-labelledby="chapters-title">
-          <div className={styles.sectionHeading}>
-            <p className={styles.eyebrow}>Provenance</p>
-            <h2 id="chapters-title">Chapters of <em>Our Story</em></h2>
+        <section className={styles.chapters} aria-labelledby="chapters-title">
+          <div className={styles.head}>
+            <svg className={styles.orn} viewBox="0 0 300 20" aria-hidden="true">
+              <g fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round">
+                <path d="M0 10h118M182 10h118" />
+                <path d="M150 1l9 9-9 9-9-9z" />
+              </g>
+            </svg>
+            <h2 id="chapters-title">The Chapters</h2>
           </div>
-          <ol className={styles.timeline}>
-            {chapters.map(({ chapter, title, description }) => (
-              <li className={styles.chapter} key={chapter}>
-                <p className={styles.chapterLabel}>{chapter}</p>
+          <ol className={styles.tl}>
+            {chapters.map(({ num, title, description }) => (
+              <li className={styles.ch} key={num}>
+                <span className={styles.num}>{num}</span>
                 <h3>{title}</h3>
                 <p>{description}</p>
               </li>
@@ -140,54 +161,56 @@ export default async function AboutPage() {
           </ol>
         </section>
 
-        <section className={styles.factsSection} aria-label="Big Shanty Auction facts">
-          <ul className={styles.facts}>
-            {facts.map(({ value, label }) => (
-              <li key={label}>
-                <strong>{value}</strong>
-                <span>{label}</span>
-              </li>
-            ))}
-          </ul>
-          <p className={styles.services}>Antique mall · Monthly auctions · Estate sales</p>
+        <section className={styles.quote} aria-label="What Big Shanty Antiques is">
+          <blockquote>Not just an antique mall.</blockquote>
+          <p>A destination for dealers, collectors, and the simply curious.</p>
         </section>
 
-        <section className={styles.missionSection} aria-label="Our mission and vision">
-          <article className={styles.principle}>
-            <p className={styles.chapterLabel}>i.</p>
-            <h2>Our Mission</h2>
-            <p>
-              To care for consignors’ items and give bidders the chance to find remarkable
-              pieces at a fair price.
-            </p>
-          </article>
-          <article className={styles.principle}>
-            <p className={styles.chapterLabel}>ii.</p>
-            <h2>Our Vision</h2>
-            <p>
-              To grow Big Shanty Antiques &amp; Auction into a leading antiques and auction
-              destination across the Southeast.
-            </p>
-          </article>
+        <section className={styles.gallery} aria-label="Inside the antique mall">
+          <div className={styles.gal}>
+            <figure>
+              <div className={styles.plate}>
+                <img
+                  src="/assets/about-carriage.jpg"
+                  alt="Antique carriage on the showroom floor"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <figcaption>Treasures large and small</figcaption>
+            </figure>
+            <figure>
+              <div className={styles.plate}>
+                <img
+                  src="/assets/about-cabinets.jpg"
+                  alt="Antique cabinets and advertising signs"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <figcaption>A new find around every corner</figcaption>
+            </figure>
+          </div>
         </section>
 
-        <section className={styles.contact} aria-labelledby="contact-title">
-          <p className={styles.eyebrow}>Be Part of the Story</p>
-          <h2 id="contact-title">
-            The next chapter could include <em>your collection.</em>
-          </h2>
-          <div className={styles.actions}>
-            <a className={styles.primaryButton} href="/contact">
-              Get in Touch
-            </a>
-            <a
-              className={styles.button}
-              href="https://bigshantyauction.hibid.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Bid Online
-            </a>
+        <section className={styles.cta} aria-labelledby="cta-title">
+          <div className={styles.panel}>
+            <svg className={styles.orn} viewBox="0 0 300 20" aria-hidden="true">
+              <g fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round">
+                <path d="M0 10h118M182 10h118" />
+                <path d="M150 1l9 9-9 9-9-9z" />
+              </g>
+            </svg>
+            <h2 id="cta-title">Come see for yourself</h2>
+            <p>Browse the floor, ask about consigning, or just say hello.</p>
+            <div className={styles.btns}>
+              <Link className={styles.btn} href="/contact">
+                Visit &amp; Contact
+              </Link>
+              <Link className={`${styles.btn} ${styles.ghost}`} href="/#services">
+                Our Services
+              </Link>
+            </div>
           </div>
         </section>
       </main>

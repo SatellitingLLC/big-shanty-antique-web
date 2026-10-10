@@ -43,7 +43,7 @@ export function SiteFooter() {
                 <Link href="/">Home</Link>
               </li>
               <li>
-                <Link href="/#about">About</Link>
+                <Link href="/about">About</Link>
               </li>
               <li>
                 <Link href="/#services">Services</Link>
