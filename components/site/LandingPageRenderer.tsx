@@ -89,7 +89,7 @@ function sanitizeMarkup(markup: string) {
       label: ["for", "class", "id"],
       form: ["class", "id", "data-contact-form"],
       textarea: ["name", "id", "class", "placeholder", "required", "rows", "cols"],
-      svg: ["viewBox", "fill", "stroke", "stroke-width", "class", "id", "aria-hidden"],
+      svg: ["viewBox", "viewbox", "fill", "stroke", "stroke-width", "class", "id", "aria-hidden"],
       circle: ["cx", "cy", "r", "fill", "stroke", "stroke-width"],
       g: ["transform"],
       line: ["x1", "y1", "x2", "y2", "stroke-width"],

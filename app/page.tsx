@@ -10,7 +10,7 @@ import { getSiteUrl } from "@/lib/site-url";
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPublishedPage("home");
   const siteUrl = getSiteUrl();
-  const logoUrl = siteUrl ? new URL("/assets/auction-photo.png", siteUrl).href : undefined;
+  const logoUrl = siteUrl ? new URL("/assets/logo.png", siteUrl).href : undefined;
   return {
     title: page.title,
     description: page.description,
@@ -19,16 +19,16 @@ export async function generateMetadata(): Promise<Metadata> {
       title: page.title,
       description: page.description,
       type: "website",
-      siteName: "Big Shanty Auction",
+      siteName: "Big Shanty Antiques",
       ...(siteUrl ? { url: siteUrl.href } : {}),
       ...(logoUrl
         ? {
             images: [
               {
                 url: logoUrl,
-                width: 640,
-                height: 426,
-                alt: "Big Shanty Auction logo",
+                width: 2066,
+                height: 1436,
+                alt: "Big Shanty Antiques logo",
               },
             ],
           }
@@ -50,7 +50,7 @@ export default async function HomePage() {
   const business = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "Big Shanty Auction",
+    name: "Big Shanty Antiques",
     description: page.description,
     telephone: "+1-770-231-2019",
     email: "dwaynesantiques@gmail.com",
@@ -66,7 +66,7 @@ export default async function HomePage() {
       ? {
           "@id": new URL("/#business", siteUrl).href,
           url: siteUrl.href,
-          image: new URL("/assets/auction-photo.png", siteUrl).href,
+          image: new URL("/assets/logo.png", siteUrl).href,
         }
       : {}),
   };
